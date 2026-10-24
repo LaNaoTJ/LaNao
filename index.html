@@ -38,7 +38,7 @@ nav a:hover,nav a:focus-visible{border-color:var(--ink);outline:none}
 @media (max-width:760px){.bar{flex-wrap:wrap}nav{order:3;width:100%;gap:18px}}
 
 .hero{display:grid;grid-template-columns:1fr 1fr;background:var(--blush)}
-.hero-img{min-height:460px;background:url("img/hero.jpg") center 20%/cover}
+.hero-img{min-height:460px;background:url("hero.jpg") center 20%/cover}
 .hero-copy{display:flex;flex-direction:column;justify-content:center;gap:18px;padding-block:48px;padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
 .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
 h1,h2{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0}
@@ -149,10 +149,10 @@ footer{padding-block:48px 32px}
   <section class="wrap" aria-labelledby="catTitle">
     <div class="head"><h2 id="catTitle">Compra por categoría</h2></div>
     <div class="cats">
-      <a class="cat" href="#tienda" data-jump="vaquera" style="background-image:url('img/vaca.jpg')"><span>Vaquera<small>Outfits cowgirl</small></span></a>
-      <a class="cat" href="#tienda" data-jump="casual" style="background-image:url('img/halter.jpg')"><span>Casual<small>Blusas · Vestidos · Pantalones</small></span></a>
-      <a class="cat" href="#tienda" data-jump="botas" style="background-image:url('img/botas.jpg')"><span>Botas<small>Tallas 23 a 26</small></span></a>
-      <a class="cat" href="#tienda" data-jump="accesorios" style="background-image:url('img/longhorn.jpg')"><span>Accesorios<small>Cinturones · Sombreros</small></span></a>
+      <a class="cat" href="#tienda" data-jump="vaquera" style="background-image:url('vaca.jpg')"><span>Vaquera<small>Outfits cowgirl</small></span></a>
+      <a class="cat" href="#tienda" data-jump="casual" style="background-image:url('halter.jpg')"><span>Casual<small>Blusas · Vestidos · Pantalones</small></span></a>
+      <a class="cat" href="#tienda" data-jump="botas" style="background-image:url('botas.jpg')"><span>Botas<small>Tallas 23 a 26</small></span></a>
+      <a class="cat" href="#tienda" data-jump="accesorios" style="background-image:url('longhorn.jpg')"><span>Accesorios<small>Cinturones · Sombreros</small></span></a>
     </div>
   </section>
 
@@ -202,7 +202,7 @@ footer{padding-block:48px 32px}
 
   <section class="wrap" id="visitanos" aria-labelledby="visitTitle">
     <div class="visit">
-      <img src="img/tienda.jpg" alt="Fachada de La Nao Boutique en Blvd. Cucapah">
+      <img src="tienda.jpg" alt="Fachada de La Nao Boutique en Blvd. Cucapah">
       <div>
         <div class="eyebrow">La Nao Boutique</div>
         <h2 id="visitTitle">Visítanos en Tijuana</h2>
@@ -269,7 +269,7 @@ const grid=document.getElementById("grid");
 function render(f){
   grid.innerHTML=products.filter(x=>f==="todo"||x.c===f).map(x=>`
    <article class="prod">
-    <div class="ph" role="img" aria-label="${x.n}" style="background-image:url('img/${x.img}.jpg')">${x.tag?`<span class="tag">${x.tag}</span>`:""}</div>
+    <div class="ph" role="img" aria-label="${x.n}" style="background-image:url('${x.img}.jpg')">${x.tag?`<span class="tag">${x.tag}</span>`:""}</div>
     <h3>${x.n}</h3>
     <div class="meta"><span class="price">${fmt(x.p)}</span><span>${x.s}</span></div>
     <a class="order" href="${wa(x.n)}">Pedir por WhatsApp</a>
