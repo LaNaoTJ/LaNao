@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="La Nao Ropa Vaquera y Más: outfits cowgirl, botas, accesorios y ropa casual en Tijuana. Apartado a 7 días y envíos por Uber.">
+<title>La Nao Ropa Vaquera</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Layout: H&M-style storefront — promo strip, sticky nav, photo hero, category tiles, filtered product grid, how-to-buy band, visit band, footer */
+:root{
+  --mauve:#ae8c8f; --mauve-deep:#8a6a6e; --blush:#f5ecec; --bg:#fbf8f7; --ink:#2b2224; --muted:#75676a; --line:#e7dcdc; --on-mauve:#ffffff; --wa:#1f8f4e;
+  --display:"Bodoni Moda", "Didot", Georgia, serif;
+  --body:"Jost", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --mauve:#b8979a; --mauve-deep:#d6b8bb; --blush:#2a2224; --bg:#1a1517; --ink:#f3eaea; --muted:#b3a3a5; --line:#3a2f31; --on-mauve:#1a1517; --wa:#4cc27f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --mauve:#b8979a; --mauve-deep:#d6b8bb; --blush:#2a2224; --bg:#1a1517; --ink:#f3eaea; --muted:#b3a3a5; --line:#3a2f31; --on-mauve:#1a1517; --wa:#4cc27f; color-scheme:dark}
+
+*{box-sizing:border-box}
+img{max-width:100%}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+.promo{background:var(--mauve);color:var(--on-mauve);text-align:center;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding-block:8px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{font-family:var(--display);font-size:26px;letter-spacing:.06em;text-decoration:none;line-height:1}
+.brand small{display:block;font-family:var(--body);font-size:9px;letter-spacing:.3em;margin-top:5px}
+nav{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none}
+nav a{text-decoration:none;font-size:13px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;padding-block:4px;border-bottom:1px solid transparent}
+nav a:hover,nav a:focus-visible{border-color:var(--ink);outline:none}
+.wa-top{font-size:13px;text-decoration:none;color:var(--wa);font-weight:500;white-space:nowrap}
+@media (max-width:760px){.bar{flex-wrap:wrap}nav{order:3;width:100%;gap:18px}}
+
+.hero{display:grid;grid-template-columns:1fr 1fr;background:var(--blush)}
+.hero-img{min-height:460px;background:url("img/hero.jpg") center 20%/cover}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;gap:18px;padding-block:48px;padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+h1,h2{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0}
+h1{font-size:clamp(38px,5.5vw,66px);line-height:1.02}
+h1 em{font-style:italic;color:var(--mauve-deep)}
+.hero-copy p{margin:0;max-width:40ch;color:var(--muted)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);border:1px solid var(--ink);padding:14px 24px;font:500 13px var(--body);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--mauve-deep);border-color:var(--mauve-deep)}
+.btn:focus-visible,.cat:focus-visible,.order:focus-visible{outline:2px solid var(--mauve);outline-offset:3px}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+@media (max-width:760px){.hero{grid-template-columns:1fr}.hero-img{min-height:380px}.hero-copy{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+
+section{padding-block:56px}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+h2{font-size:clamp(28px,3.5vw,40px)}
+
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cat{position:relative;aspect-ratio:3/4;max-width:100%;display:flex;align-items:flex-end;padding:16px;text-decoration:none;color:#fff;overflow:hidden;background-size:cover;background-position:center 25%}
+.cat::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(35,18,22,.7),transparent 55%)}
+.cat span{position:relative;z-index:1;font-family:var(--display);font-size:clamp(20px,2.6vw,30px);line-height:1.1}
+.cat small{display:block;font-family:var(--body);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-top:6px}
+@media (max-width:760px){.cats{grid-template-columns:1fr 1fr}}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.chip{background:transparent;border:1px solid var(--line);color:var(--ink);padding:8px 16px;font:400 13px var(--body);letter-spacing:.06em;cursor:pointer;border-radius:999px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip:focus-visible{outline:2px solid var(--mauve);outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 14px}
+@media (max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:600px){.grid{grid-template-columns:1fr 1fr}}
+.prod{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ph{aspect-ratio:3/4;max-width:100%;position:relative;background:var(--blush) center/cover}
+.tag{position:absolute;top:10px;left:10px;background:var(--bg);color:var(--ink);font:500 10px var(--body);letter-spacing:.14em;text-transform:uppercase;padding:4px 8px}
+.prod h3{margin:4px 0 0;font-weight:400;font-size:14px}
+.meta{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--muted)}
+.price{font-variant-numeric:tabular-nums;font-weight:500;color:var(--ink);font-size:15px}
+.order{font:500 12px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--wa);text-underline-offset:4px;width:fit-content}
+
+.info{background:var(--blush)}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+@media (max-width:760px){.info-grid{grid-template-columns:1fr}}
+.info h3{font-family:var(--display);font-weight:400;font-size:26px;margin:0 0 8px}
+.info p{margin:0;color:var(--muted);max-width:38ch}
+.big{font-family:var(--display);font-size:44px;line-height:1;color:var(--mauve-deep);margin:4px 0 8px}
+.steps{margin:10px 0 0;padding-left:20px;color:var(--muted);display:grid;gap:4px}
+.note{margin-top:12px;font-size:13px;color:var(--ink);border-left:2px solid var(--mauve);padding-left:10px}
+.policy{margin-top:32px;text-align:center;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+
+.visit{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
+.visit img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.visit dl{display:grid;grid-template-columns:auto 1fr;gap:6px 20px;margin:16px 0 22px;font-variant-numeric:tabular-nums}
+.visit dt{color:var(--muted)}
+.visit dd{margin:0}
+.addr{font-size:17px;margin:12px 0 0}
+@media (max-width:760px){.visit{grid-template-columns:1fr}.visit img{aspect-ratio:4/3}}
+
+.join{background:var(--mauve);color:var(--on-mauve)}
+.join .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.join h2{font-size:clamp(26px,3vw,36px)}
+.join p{margin:6px 0 0}
+.join .btn{background:var(--on-mauve);color:var(--mauve-deep);border-color:var(--on-mauve)}
+
+footer{padding-block:48px 32px}
+.foot{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:28px}
+@media (max-width:760px){.foot{grid-template-columns:1fr 1fr}}
+.foot img{width:110px}
+.foot h4{margin:0 0 10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;color:var(--muted);font-size:14px}
+.foot a{text-decoration:none}.foot a:hover{text-decoration:underline}
+.legal{margin-top:36px;font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+
+<div class="promo">Apartado a 7 días con 50% de anticipo · Envíos locales por Uber</div>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#inicio">LA NAO.<small>ROPA VAQUERA Y MÁS</small></a>
+    <nav aria-label="Categorías">
+      <a href="#tienda" data-jump="vaquera">Vaquera</a>
+      <a href="#tienda" data-jump="casual">Casual</a>
+      <a href="#tienda" data-jump="botas">Botas</a>
+      <a href="#tienda" data-jump="accesorios">Accesorios</a>
+      <a href="#como-comprar">Apartado y envíos</a>
+      <a href="#visitanos">Visítanos</a>
+    </nav>
+    <a class="wa-top" href="https://wa.me/526648211371">WhatsApp 664 821 1371</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero">
+    <div class="hero-img" role="img" aria-label="Conjunto satinado café en la boutique La Nao"></div>
+    <div class="hero-copy">
+      <div class="eyebrow">Drop de otoño · Ya disponible</div>
+      <h1>Estilo vaquero con un toque <em>rosa</em></h1>
+      <p>Outfits cowgirl, botas, sombreros, cinturones y ropa casual. Elegidos pieza por pieza en nuestra boutique de Tijuana.</p>
+      <div class="row">
+        <a class="btn" href="#tienda">Comprar ahora</a>
+        <a class="btn ghost" href="#como-comprar">Cómo apartar</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap" aria-labelledby="catTitle">
+    <div class="head"><h2 id="catTitle">Compra por categoría</h2></div>
+    <div class="cats">
+      <a class="cat" href="#tienda" data-jump="vaquera" style="background-image:url('img/vaca.jpg')"><span>Vaquera<small>Outfits cowgirl</small></span></a>
+      <a class="cat" href="#tienda" data-jump="casual" style="background-image:url('img/halter.jpg')"><span>Casual<small>Blusas · Vestidos · Pantalones</small></span></a>
+      <a class="cat" href="#tienda" data-jump="botas" style="background-image:url('img/botas.jpg')"><span>Botas<small>Tallas 23 a 26</small></span></a>
+      <a class="cat" href="#tienda" data-jump="accesorios" style="background-image:url('img/longhorn.jpg')"><span>Accesorios<small>Cinturones · Sombreros</small></span></a>
+    </div>
+  </section>
+
+  <section class="wrap" id="tienda" aria-labelledby="newTitle">
+    <div class="head"><h2 id="newTitle">Lo disponible</h2><span class="eyebrow">Precios en MXN</span></div>
+    <div class="filters" role="group" aria-label="Filtrar productos">
+      <button class="chip" data-f="todo" aria-pressed="true">Todo</button>
+      <button class="chip" data-f="vaquera" aria-pressed="false">Vaquera</button>
+      <button class="chip" data-f="casual" aria-pressed="false">Casual</button>
+      <button class="chip" data-f="botas" aria-pressed="false">Botas</button>
+      <button class="chip" data-f="accesorios" aria-pressed="false">Accesorios</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="info" id="como-comprar" aria-labelledby="howTitle">
+    <div class="wrap">
+      <div class="head"><h2 id="howTitle">Cómo comprar</h2></div>
+      <div class="info-grid">
+        <div>
+          <h3>Sistema de apartado</h3>
+          <div class="big">A 7 días</div>
+          <p>Aparta cualquier pieza con el 50% de anticipo y liquida el resto dentro de 7 días.</p>
+        </div>
+        <div>
+          <h3>Envíos locales por Uber</h3>
+          <ol class="steps">
+            <li>Haz tu pedido por redes sociales o WhatsApp.</li>
+            <li>Paga el total por transferencia o depósito bancario.</li>
+            <li>Envía tu información de envío.</li>
+            <li>Confirmamos la tarifa de Uber y enviamos.</li>
+          </ol>
+          <p class="note">El envío no está incluido en el total de tu compra.</p>
+        </div>
+        <div>
+          <h3>Pide por DM o WhatsApp</h3>
+          <p>Escríbenos con la foto o el nombre de la pieza y tu talla. Te confirmamos disponibilidad.</p>
+          <div class="row" style="margin-top:16px">
+            <a class="btn" href="https://wa.me/526648211371?text=Hola%2C%20quiero%20hacer%20un%20pedido">WhatsApp</a>
+            <a class="btn ghost" href="https://www.instagram.com/lanao_tj">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <p class="policy">No se hacen cambios ni devoluciones</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="visitanos" aria-labelledby="visitTitle">
+    <div class="visit">
+      <img src="img/tienda.jpg" alt="Fachada de La Nao Boutique en Blvd. Cucapah">
+      <div>
+        <div class="eyebrow">La Nao Boutique</div>
+        <h2 id="visitTitle">Visítanos en Tijuana</h2>
+        <p class="addr">Blvd. Cucapah 20323, Amp. Guaycura<br>22214 Tijuana, B.C.</p>
+        <dl>
+          <dt>Lunes a viernes</dt><dd>11:00 am – 7:00 pm</dd>
+          <dt>Sábado</dt><dd>10:00 am – 6:00 pm</dd>
+          <dt>Domingo</dt><dd>10:00 am – 4:00 pm</dd>
+          <dt>Teléfono</dt><dd>664 821 1371</dd>
+        </dl>
+        <div class="row">
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=La+Nao+Boutique+Blvd+Cucapah+20323+Tijuana">Cómo llegar</a>
+          <a class="btn ghost" href="https://wa.me/526648211371">Escríbenos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="join">
+    <div class="wrap">
+      <div><h2>Entérate de cada drop</h2><p>Publicamos lo disponible cada semana en Instagram y TikTok.</p></div>
+      <a class="btn" href="https://www.instagram.com/lanao_tj">Seguir a @lanao_tj</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot">
+    <div><img src="logo.jpg" alt="La Nao Makeup &amp; Closet"></div>
+    <div><h4>Tienda</h4><ul>
+      <li><a href="#tienda" data-jump="vaquera">Vaquera</a></li><li><a href="#tienda" data-jump="casual">Casual</a></li>
+      <li><a href="#tienda" data-jump="botas">Botas</a></li><li><a href="#tienda" data-jump="accesorios">Accesorios</a></li></ul></div>
+    <div><h4>Ayuda</h4><ul>
+      <li><a href="#como-comprar">Apartado</a></li><li><a href="#como-comprar">Envíos por Uber</a></li>
+      <li><a href="#visitanos">Horario y ubicación</a></li><li>WhatsApp 664 821 1371</li></ul></div>
+    <div><h4>Síguenos</h4><ul>
+      <li><a href="https://www.instagram.com/lanao_tj">Instagram</a></li>
+      <li><a href="https://www.facebook.com/search/top?q=La%20Nao%20Ropa%20Vaquera%20y%20Mas">Facebook</a></li>
+      <li><a href="https://www.tiktok.com/@lanao2288">TikTok</a></li></ul></div>
+  </div>
+  <p class="legal">© 2026 La Nao Ropa Vaquera y Más · Tijuana, Baja California</p>
+</footer>
+
+<script>
+const products=[
+ {n:"Top corset de mezclilla",c:"vaquera",p:250,s:"S/M/L",img:"corset",tag:"Promoción"},
+ {n:"Vestido print vaca",c:"vaquera",p:590,s:"S/M/L",img:"vaca"},
+ {n:"Top de piel con estoperoles",c:"vaquera",p:280,s:"S/M/L",img:"piel",tag:"Nuevo"},
+ {n:"Capa café",c:"vaquera",p:570,s:"M/L",img:"capa"},
+ {n:"Blusa satinada café",c:"casual",p:420,s:"S/M/L",img:"satin",tag:"Drop otoño"},
+ {n:"Blusa beige con mangas abiertas",c:"casual",p:480,s:"M/L",img:"beige"},
+ {n:"Vestido halter satinado",c:"casual",p:350,s:"S/M/L",img:"halter"},
+ {n:"Pantalón animal print",c:"casual",p:490,s:"S/M/L",img:"leopardo"},
+ {n:"Top drapeado",c:"casual",p:200,s:"",img:"drapeado"},
+ {n:"Blusa de lunares",c:"casual",p:390,s:"S/M/L",img:"lunares"},
+ {n:"Botas vaqueras",c:"botas",p:890,s:"Tallas 23–26",img:"botas",tag:"Nuevo"},
+ {n:"Cinturón con hebilla plateada",c:"accesorios",p:450,s:"",img:"cinto"},
+ {n:"Cinturones con hebilla grabada",c:"accesorios",p:0,s:"Varios colores",img:"hebillas"},
+ {n:"Cinturones longhorn",c:"accesorios",p:0,s:"Varios colores",img:"longhorn"}
+];
+const fmt=n=>n?"$"+n.toLocaleString("es-MX"):"Consultar precio";
+const wa=n=>"https://wa.me/526648211371?text="+encodeURIComponent("Hola, me interesa: "+n+". ¿Está disponible?");
+const grid=document.getElementById("grid");
+function render(f){
+  grid.innerHTML=products.filter(x=>f==="todo"||x.c===f).map(x=>`
+   <article class="prod">
+    <div class="ph" role="img" aria-label="${x.n}" style="background-image:url('img/${x.img}.jpg')">${x.tag?`<span class="tag">${x.tag}</span>`:""}</div>
+    <h3>${x.n}</h3>
+    <div class="meta"><span class="price">${fmt(x.p)}</span><span>${x.s}</span></div>
+    <a class="order" href="${wa(x.n)}">Pedir por WhatsApp</a>
+   </article>`).join("");
+}
+function filter(f){
+  document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.f===f));
+  render(f);
+}
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>filter(c.dataset.f));
+document.querySelectorAll("[data-jump]").forEach(a=>a.addEventListener("click",()=>filter(a.dataset.jump)));
+render("todo");
+</script>
+
+</body>
+</html>
